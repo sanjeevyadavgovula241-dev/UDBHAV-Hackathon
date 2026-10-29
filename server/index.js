@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const { GoogleGenerativeAI } = require('@google/generative-ai');
+const complianceRoutes = require('./compliance/routes');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -106,6 +107,9 @@ app.get('/api/financials', (req, res) => {
 app.get('/api/employees', (req, res) => {
   res.json({ employees });
 });
+
+// --- COMPLIANCE COPILOT ---
+app.use('/api/compliance', complianceRoutes);
 
 // --- AI ENDPOINTS ---
 
