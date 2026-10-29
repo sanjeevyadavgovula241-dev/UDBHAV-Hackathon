@@ -1,4 +1,4 @@
-import { DollarSign, LayoutDashboard, LineChart, ShieldCheck, Users } from "lucide-react";
+import { Bot, DollarSign, LayoutDashboard, LineChart, ShieldCheck, Users } from "lucide-react";
 
 export const navItems = [
   {
@@ -7,6 +7,7 @@ export const navItems = [
     title: "Executive overview",
     description: "A live snapshot of revenue, clients, pipeline, and operations.",
     icon: LayoutDashboard,
+    section: "Workspace",
   },
   {
     path: "/business-intelligence",
@@ -14,6 +15,7 @@ export const navItems = [
     title: "Business intelligence",
     description: "Turn product and client signals into confident decisions.",
     icon: LineChart,
+    section: "Workspace",
   },
   {
     path: "/financials",
@@ -21,6 +23,7 @@ export const navItems = [
     title: "Financial analytics",
     description: "Track profitability, operating costs, and market movement.",
     icon: DollarSign,
+    section: "Workspace",
   },
   {
     path: "/employees",
@@ -28,6 +31,7 @@ export const navItems = [
     title: "People & payroll",
     description: "Manage compensation, performance, and department health.",
     icon: Users,
+    section: "Workspace",
   },
   {
     path: "/compliance",
@@ -35,6 +39,17 @@ export const navItems = [
     title: "AI compliance copilot",
     description: "Simulate changes, track evidence, and document human oversight.",
     icon: ShieldCheck,
+    section: "Governance",
+    badge: "AI Copilot",
+  },
+  {
+    path: "/reports",
+    label: "Reports Chat",
+    title: "Instant report generator chatbot",
+    description: "Voice-driven and natural language compliance report compiler & exporter.",
+    icon: Bot,
+    section: "Governance",
+    badge: "Instant AI",
   },
 ];
 
@@ -44,5 +59,15 @@ export function getPageMeta(pathname) {
   const section = navItems.find(
     (item) => item.path !== "/" && pathname.startsWith(`${item.path}/`),
   );
-  return section ?? navItems[0];
+  if (section) {
+    if (pathname.includes("/systems/")) {
+      return {
+        ...section,
+        title: "Compliance system workspace",
+        subpath: "System details",
+      };
+    }
+    return section;
+  }
+  return navItems[0];
 }

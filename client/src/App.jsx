@@ -11,6 +11,7 @@ import EvidenceTracking from './pages/compliance/EvidenceTracking';
 import OversightSandbox from './pages/compliance/OversightSandbox';
 import ActivityHistory from './pages/compliance/ActivityHistory';
 import ChangeReviewPack from './pages/compliance/ChangeReviewPack';
+import ReportsChat from './pages/ReportsChat';
 
 function App() {
   return (
@@ -22,6 +23,8 @@ function App() {
           <Route path="financials" element={<Financials />} />
           <Route path="employees" element={<EmployeeManagement />} />
           <Route path="compliance" element={<ComplianceOverview />} />
+          <Route path="reports" element={<ReportsChat />} />
+          <Route path="compliance/reports" element={<ReportsChat />} />
           <Route path="compliance/systems/:systemId" element={<ComplianceSystemLayout />}>
             <Route index element={<Navigate to="changes/new" replace />} />
             <Route path="changes/new" element={<ChangeSimulator />} />

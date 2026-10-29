@@ -17,6 +17,7 @@ import { EmptyState, ErrorState, LoadingState } from "../../components/ui/States
 import { apiRequest } from "../../lib/api";
 import { formatDateTime } from "../../lib/format";
 import { statusVariant } from "../../lib/status";
+import { buttonStyles } from "../../lib/buttonStyles";
 
 function SystemCard({ system }) {
   const { counts, latestChange, latestActivity } = system;
@@ -157,7 +158,15 @@ export default function ComplianceOverview() {
         eyebrow="AI compliance copilot"
         title="Compliance workspace"
         description="Simulate system changes, invalidate dependent evidence, exercise human oversight, and generate review packs."
-        actions={<Badge variant="violet">Demo systems · persisted records</Badge>}
+        actions={
+          <div className="flex flex-wrap items-center gap-2">
+            <Link to="/reports" className={buttonStyles({ variant: "primary", size: "sm" })}>
+              <Sparkles size={14} />
+              Instant Reports Chatbot
+            </Link>
+            <Badge variant="violet">Demo systems · persisted records</Badge>
+          </div>
+        }
       />
 
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">

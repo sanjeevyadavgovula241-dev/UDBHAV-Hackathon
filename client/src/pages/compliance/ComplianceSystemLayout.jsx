@@ -8,6 +8,7 @@ import {
   History,
   ScanSearch,
   ShieldCheck,
+  Sparkles,
 } from "lucide-react";
 import Badge from "../../components/ui/Badge";
 import Button from "../../components/ui/Button";
@@ -98,6 +99,12 @@ export default function ComplianceSystemLayout() {
               {system.criticality} criticality
             </Badge>
             <Badge variant="info">Baseline {system.baselineVersion}</Badge>
+            <Link to="/reports">
+              <Button variant="secondary" size="sm">
+                <Sparkles size={14} />
+                Instant Report
+              </Button>
+            </Link>
             <Link to="/compliance">
               <Button variant="ghost" size="sm">
                 <ArrowLeft size={14} />
